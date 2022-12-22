@@ -91,12 +91,16 @@ def main():
 
         order_item = order_item.lower().title()
 
-        if order_item not in menu_dict:
+        if order_item == "Cart":
+            print('Cart:')
+            for item in menu_dict:
+                if menu_dict[item] > 0:
+                    print(f"{item}: {menu_dict[item]}")
+        elif order_item not in menu_dict:
             print('Sorry, please pick from our menu.')
         else:
             menu_dict[order_item] += 1
-
-            print(f"{menu_dict[order_item]} orders of {order_item} have been added")
+            print(f"{menu_dict[order_item]} orders of {order_item} have been added.  See cart by typing 'cart'")
 
     print(farewell)
 
