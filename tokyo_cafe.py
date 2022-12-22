@@ -66,6 +66,18 @@ order_prompt = dedent(
     ----------------------------
         What would you like?
     ----------------------------
+    Type the food you would like
+    Type 'help' for assistance
+    '''
+)
+
+help_menu = dedent(
+    '''
+    Commands:
+    cart - view your cart
+    menu - view the menu
+    clear - to clear your cart
+    quit - to leave the app
     '''
 )
 
@@ -86,9 +98,6 @@ def main():
 
         order_item = input(order_prompt)
 
-        if order_item == "quit":
-            break
-
         order_item = order_item.lower().title()
 
         if order_item == "Cart":
@@ -96,6 +105,15 @@ def main():
             for item in menu_dict:
                 if menu_dict[item] > 0:
                     print(f"{item}: {menu_dict[item]}")
+        elif order_item == "Menu":
+            print(menu)
+        elif order_item == "Help":
+            print(help_menu)
+        elif order_item == "Clear":
+            for item in menu_dict:
+                menu_dict[item] = 0
+        elif order_item == "Quit":
+            break
         elif order_item not in menu_dict:
             print('Sorry, please pick from our menu.')
         else:
